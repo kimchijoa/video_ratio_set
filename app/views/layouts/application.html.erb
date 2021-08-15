@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VideoProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- 자바스크립트 CDN 용 -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    
+  </head>
+
+  <body>
+
+  <% unless is_user_logined? %>
+    <div>로긴안되있음</div>
+  <% else %>
+    <div>로긴중 ㅎㅎ</div>
+  <% end %>
+
+  <nav>
+    <ul>
+      <li><%= link_to "로그인", class: "btn btn-danger btn-sm"%></li>
+      <li><%= link_to "로그아웃", logout_path, class: "btn btn-danger btn-sm"%></li>
+      
+    </ul>
+  </nav>
+    <%= yield %>
+  </body>
+</html>
