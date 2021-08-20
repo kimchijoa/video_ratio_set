@@ -20,17 +20,22 @@
   </head>
 
   <body>
-
-  <% unless is_user_logined? %>
+  <% if token_validate == false %>
     <div>로긴안되있음</div>
   <% else %>
     <div>로긴중 ㅎㅎ</div>
+    <%= link_to '토큰테스트 해보기', token_path, class: "btn btn-danger btn-sm"%>
+    <%= link_to '토큰테스트 해보기 for content', content01_path, class: "btn btn-default btn-sm"%>
   <% end %>
 
   <nav>
     <ul>
-      <li><%= link_to "로그인", class: "btn btn-danger btn-sm"%></li>
-      <li><%= link_to "로그아웃", logout_path, class: "btn btn-danger btn-sm"%></li>
+      <li><%= link_to "메인", root_path, class: "btn btn-default btn-sm"%></li>
+      <% if token_validate == false %>
+        <li><%= link_to "로그인", login_path, class: "btn btn-default btn-sm"%></li>
+      <% else %>
+        <li><%= link_to "로그아웃", logout_path, remote: true, class: "btn btn-danger btn-sm"%></li>
+      <% end %>
       
     </ul>
   </nav>

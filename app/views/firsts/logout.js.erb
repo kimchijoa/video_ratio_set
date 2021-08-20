@@ -1,0 +1,12 @@
+//sessionStorage.clear();
+
+//쿠키 삭제
+var name = "access_token";
+var value = "1231231";
+document.cookie = name + '=' + value;
+var date = new Date();
+date.setDate(date.getDate() - 100);
+var Cookie = `${name}=;Expires=${date.toUTCString()}`
+document.cookie = Cookie;
+
+location.reload();
