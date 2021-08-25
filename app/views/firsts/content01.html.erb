@@ -1,1 +1,6 @@
-로그인하면 보임 ㅎㅎㅎ
+
+
+<%= form_tag file_save_path, method: 'post', multipart: true do %>
+    <%= file_field_tag 'c_video' %>
+    <%= submit_tag '업로드' %>
+<% end %>

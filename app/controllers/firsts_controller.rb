@@ -1,5 +1,6 @@
 require 'uri'
 require 'net/http'
+require 'open3'
 
 class FirstsController < ApplicationController
   before_action :set_cookie
@@ -52,9 +53,42 @@ class FirstsController < ApplicationController
   end
 
   def content01
-    #쉘 스크립트 파일 실행
-    system("sh test_shell")
+
   end
+
+  def file_save
+      @a = SaveVideo.create(file_name: params[:c_video])
+      puts @a.id
+      redirect_to video_ratio_wait_path(id: @a.id)
+  end
+
+  def video_ratio_wait
+    @a = SaveVideo.find(params[:id])
+    @test = @a.file_name.file.filename
+
+
+  end
+
+  def start_ratio
+    
+    #쉘 스크립트 파일 실행
+    puts "받은 매개변수 : #{params[:id]}"
+    @file = SaveVideo.find(params[:id])
+    file_id = @file.id
+    file_name = @file.file_name.file.filename
+    puts "file_id : #{file_id}"
+    puts "file_name : #{file_name}"
+
+    #system("sh test_shell.sh #{file_id} #{file_name}")
+    stdout, stderr, status = Open3.capture3("sh test_shell.sh #{file_id} #{file_name}")
+    puts "이건 stdout : #{stdout}"
+    
+    @result = stdout.split("result_video_path_sp")
+    puts "이건 자른거 : #{@result[1]}"
+    # puts "이건 stdin : #{stdin}"
+    puts "이건 stderr : #{stderr}" 
+  
+  end 
 
   def logout
     cookies.delete :at_token

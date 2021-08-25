@@ -91,7 +91,7 @@ def image_to_video(dir, mk_video_name, frame):
         out.write(img_array[i])
     out.release()
     
-def video_make_ratio(dir, select_video):
+def video_make_ratio(save_path, select_video):
     #영상 객체 저장
     cap = cv2.VideoCapture(select_video)
     print(cap)
@@ -107,7 +107,7 @@ def video_make_ratio(dir, select_video):
     fps = cap.get(cv2.CAP_PROP_FPS) # 카메라에 따라 값이 정상적, 비정상적
     print("fps : " + str(fps))
     # out = cv2.VideoWriter(dir + "Test01" + ".mp4" ,cv2.VideoWriter_fourcc(*'DIVX'),fps, framesize)
-    out = cv2.VideoWriter(dir + "Test01" + ".mp4" ,cv2.VideoWriter_fourcc(*'mp4v'),fps, framesize)
+    out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'),fps, framesize)
     # loop through frames
     # while cap.isOpened():
     while (cap.isOpened):
