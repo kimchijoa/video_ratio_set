@@ -86,7 +86,9 @@ class FirstsController < ApplicationController
     @result = stdout.split("result_video_path_sp")
     puts "이건 자른거 : #{@result[1]}"
     # puts "이건 stdin : #{stdin}"
-    puts "이건 stderr : #{stderr}" 
+    puts "이건 stderr : #{stderr}"
+
+    render layout: false
   
   end 
 

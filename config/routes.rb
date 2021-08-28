@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get 'first/content01', to: 'firsts#content01', as: 'content01'
   post 'first/file_save', to: 'firsts#file_save', as: 'file_save'
   get 'first/video_ratio_wait/:id', to: 'firsts#video_ratio_wait', as: 'video_ratio_wait'
-  get 'first/start_ratio/:id', to: 'firsts#start_ratio', as: 'start_ratio'
+  get 'first/start_ratio', to: 'firsts#start_ratio', as: 'start_ratio'
 
 end
