@@ -65,6 +65,7 @@ class FirstsController < ApplicationController
   def video_ratio_wait
     @a = SaveVideo.find(params[:id])
     @test = @a.file_name.file.filename
+    @download_link = "http://localhost:3000/ratio_#{@a.id}.mp4"
 
 
   end
@@ -87,8 +88,6 @@ class FirstsController < ApplicationController
     puts "이건 자른거 : #{@result[1]}"
     # puts "이건 stdin : #{stdin}"
     puts "이건 stderr : #{stderr}"
-
-    render layout: false
   
   end 
 

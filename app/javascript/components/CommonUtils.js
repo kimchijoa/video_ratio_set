@@ -54,3 +54,10 @@ export function closeLoadingWithMask() {
         location.reload();
         //메인페이지로 이동하는 기능 +
 }
+
+export function closeLoadingWithMaskNoneReLoad() {
+    // function closeLoadingWithMask() {
+        $('#mask, #loadingImg').hide();
+        $('#mask, #loadingImg').remove(); 
+        //메인페이지로 이동하는 기능 +
+}
